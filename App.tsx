@@ -1,118 +1,49 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Splashscreen, LoginPage, HomePage, ProfilePage, 
+         ChangePassword, MindTest, CaracterTest, HasilTest, 
+         DaftarPage, DataDiriPage, LiveShow, ChatPage, LupaPassword,
+         InputUserEmail, Verification, SetPassword, StorePage,
+         AssetPage, InCall, CallPage, VideoCallPage, RandomMeeting,
+         FriendProfile, LiveMe } from './src/pages'; 
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Stack = createNativeStackNavigator();
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    // <Splashscreen />
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="SplashScreen">
+          <Stack.Screen name="Splashscreen" component={Splashscreen} options={{headerShown: false}} />
+          <Stack.Screen name="LoginPage" component={LoginPage} options={{headerShown: false}} />
+          <Stack.Screen name="HomePage" component={HomePage} options={{headerShown: false}} />
+          <Stack.Screen name="ProfilePage" component={ProfilePage} options={{headerShown: false}} />
+          <Stack.Screen name="ChangePassword" component={ChangePassword} options={{headerShown: false}} />
+          <Stack.Screen name="MindTest" component={MindTest} options={{headerShown: false}} />
+          <Stack.Screen name="CaracterTest" component={CaracterTest} options={{headerShown: false}} />
+          <Stack.Screen name="HasilTest" component={HasilTest} options={{headerShown: false}} />
+          <Stack.Screen name="DaftarPage" component={DaftarPage} options={{headerShown: false}} />
+          <Stack.Screen name="DataDiriPage" component={DataDiriPage} options={{headerShown: false}} />
+          <Stack.Screen name="LiveShow" component={LiveShow} options={{headerShown: false}} />
+          <Stack.Screen name="ChatPage" component={ChatPage} options={{headerShown: false}} />
+          <Stack.Screen name="LupaPassword" component={LupaPassword} options={{headerShown: false}} />
+          <Stack.Screen name="InputUserEmail" component={InputUserEmail} options={{headerShown: false}} />
+          <Stack.Screen name="Verification" component={Verification} options={{headerShown: false}} />
+          <Stack.Screen name="SetPassword" component={SetPassword} options={{headerShown: false}} />
+          <Stack.Screen name="StorePage" component={StorePage} options={{headerShown: false}} />
+          <Stack.Screen name="AssetPage" component={AssetPage} options={{headerShown: false}} />
+          <Stack.Screen name="CallPage" component={CallPage} options={{headerShown: false}} />
+          <Stack.Screen name="VideoCallPage" component={VideoCallPage} options={{headerShown: false}} />
+          <Stack.Screen name="RandomMeeting" component={RandomMeeting} options={{headerShown: false}} />
+          <Stack.Screen name="FriendProfile" component={FriendProfile} options={{headerShown: false}} />
+          <Stack.Screen name="LiveMe" component={LiveMe} options={{headerShown: false}} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+};
 
 export default App;
